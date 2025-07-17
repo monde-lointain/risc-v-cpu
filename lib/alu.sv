@@ -10,7 +10,7 @@ module alu
 );
 
   always_comb begin
-    case (iw.opcode_e)
+    case (iw.opcode)
       AND: result = iw.a & iw.b;
       OR : result = iw.a | iw.b;
       ADD: result = iw.a + iw.b;

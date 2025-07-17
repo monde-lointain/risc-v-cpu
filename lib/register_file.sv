@@ -15,7 +15,7 @@ module register_file
 
   // Write to the register file
   always_ff @(posedge clk) begin
-    if (write_en && write_ptr)
+    if (write_en && write_ptr != 0)
       registers[write_ptr] <= write_data;
   end
 

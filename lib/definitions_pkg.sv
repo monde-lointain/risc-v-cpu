@@ -14,7 +14,7 @@ package definitions_pkg;
 
   typedef struct {
     logic [31:0] a, b;
-    opcodes_t    opcode_e;
+    opcodes_t    opcode;
   } instruction_t;
 endpackage: definitions_pkg
 
