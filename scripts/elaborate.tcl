@@ -3,7 +3,7 @@ set outputDir ../buildresults
 file mkdir $outputDir
 
 # Create dummy project
-create_project controller ./buildresults -part xc7a35tcpg236-1 -force
+create_project datapath ./buildresults -part xc7a35tcpg236-1 -force
 
 # Compile all RTL files that will be synthesized 
 if {[glob -nocomplain ./rtl/*.sv] != ""} {
@@ -23,7 +23,7 @@ if {[glob -nocomplain ./rtl/*.vhd] != ""} {
 }
 
 puts "Synthesizing design..."
-synth_design -rtl -name controller -top controller -flatten_hierarchy full 
+synth_design -rtl -name datapath -top datapath -flatten_hierarchy full 
 
 puts "Starting GUI..."
 start_gui

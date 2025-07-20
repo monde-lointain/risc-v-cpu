@@ -11,12 +11,7 @@ package definitions_pkg;
     ADD   = 4'b0010,
     SUB   = 4'b0110,
     XXX   =  'x
-  } alu_op_e;
-
-  typedef struct {
-    logic [31:0] a, b;
-    alu_op_e     opcode;
-  } alu_op_t;
+  } alu_sel_e;
 endpackage: definitions_pkg
 
 `endif // DEFINITIONS_PKG_SV

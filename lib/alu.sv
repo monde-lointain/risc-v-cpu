@@ -4,17 +4,18 @@
 
 module alu
  import definitions_pkg::*;
-(input  alu_op_t      op, 
- output logic [31:0]  result,
- output logic         zero
+(input  alu_sel_e    sel, 
+ input  logic [31:0] a, b,
+ output logic [31:0] result,
+ output logic        zero
 );
 
   always_comb begin
-    case (op.opcode)
-      AND:     result = op.a & op.b;
-      OR :     result = op.a | op.b;
-      ADD:     result = op.a + op.b;
-      SUB:     result = op.a - op.b;
+    case (sel)
+      AND:     result = a & b;
+      OR :     result = a | b;
+      ADD:     result = a + b;
+      SUB:     result = a - b;
       default: result = 0;
     endcase
   end

@@ -4,7 +4,7 @@ set outputDir ../buildresults
 file mkdir $outputDir
 
 # Create dummy project
-create_project alu ./buildresults -part xc7a35tcpg236-1 -force
+create_project datapath ./buildresults -part xc7a35tcpg236-1 -force
 
 # Compile all RTL files that will be synthesized 
 if {[glob -nocomplain ./rtl/*.sv] != ""} {
@@ -27,7 +27,7 @@ puts "Importing files to project folder..."
 import_files -force -norecurse
 
 puts "Updating compile order for source files..."
-set_property top alu [current_fileset]
+set_property top datapath [current_fileset]
 update_compile_order -fileset sources_1
 update_compile_order -fileset sim_1
 
