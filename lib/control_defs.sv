@@ -20,7 +20,6 @@ package control_defs;
     logic     mem_read;   
     logic     mem_write;
     logic     branch; 
-    alu_sel_e alu_sel;
   } control_t;
 endpackage: control_defs
 

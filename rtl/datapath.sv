@@ -6,6 +6,7 @@ module datapath
  import control_defs::*;
 (input  logic        clk,
  input  control_t    ctrl,
+ input  alu_sel_e    alu_sel,
  output logic [31:0] instruction
 );
   logic [31:0] pc, next_inst_pc, branch_pc;
@@ -34,7 +35,7 @@ module datapath
   // Perform ALU operation
   logic [31:0] alu_result;
   logic zero;
-  alu alu(.sel(ctrl.alu_sel), .a(alu_a), .b(alu_b), .result(alu_result), .zero);
+  alu alu(.sel(alu_sel), .a(alu_a), .b(alu_b), .result(alu_result), .zero);
 
   // Select next PC
   assign next_inst_pc = pc + 4;

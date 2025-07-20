@@ -7,6 +7,7 @@ module cpu
 (input clk);
 
   control_t ctrl;
+  alu_sel_e alu_sel;
 
   logic [31:0] instruction;
   logic [6:0]  opcode = instruction[6:0];
