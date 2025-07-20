@@ -11,9 +11,9 @@ module data_memory
 
  logic [31:0] mem [0:1023];
 
- assign read_data = mem_read ? mem[addr] : 'z;
-
- always @(posedge clk)
+ always_ff @(posedge clk) begin
+   if (mem_read)  read_data <= mem[addr];
    if (mem_write) mem[addr] <= write_data;
+ end
 
 endmodule: data_memory
