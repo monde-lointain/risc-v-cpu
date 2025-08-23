@@ -4,7 +4,7 @@
 
 module cpu
  import control_defs::*;
-(input clk);
+(input clk, rst_n);
 
   control_t ctrl;
   alu_sel_e alu_sel;

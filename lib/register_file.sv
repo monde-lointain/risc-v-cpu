@@ -3,11 +3,9 @@
  ***********************************************************************/
 
 module register_file
-(input  logic        clk, write_en,  
+(input  logic        clk, rst_n, write_en,  
  input  logic [31:0] write_data, 
- input  logic [ 4:0] write_ptr,
- input  logic [ 4:0] read_a_ptr,
- input  logic [ 4:0] read_b_ptr,
+ input  logic [ 4:0] write_ptr, read_a_ptr, read_b_ptr,
  output logic [31:0] a, b 
 );
 
@@ -15,7 +13,11 @@ module register_file
 
   // Write to the register file
   always_ff @(posedge clk) begin
-    if (write_en && write_ptr != 0)
+    if (!rst_n) begin // Synchronous active-low reset
+      foreach (registers[i])
+        registers[i] <= '0; // Reset registers
+    end
+    else if (write_en) 
       registers[write_ptr] <= write_data;
   end
 
