@@ -13,17 +13,17 @@ module alu_control
   always_comb begin
     case ({alu_op, funct7, funct3}) inside
       // LW or SW operand
-      12'b00xxxxxxxxxx: alu_sel = ADD; 
+      12'b00??????????: alu_sel = ADD; 
       // BEQ operand
-      12'bx1xxxxxxxxxx: alu_sel = SUB; 
+      12'b01??????????: alu_sel = SUB; 
       // ADD operand
-      12'b1x0000000000: alu_sel = ADD; 
+      12'b1?0000000000: alu_sel = ADD; 
       // SUB operand
-      12'b1x0100000000: alu_sel = SUB; 
+      12'b1?0100000000: alu_sel = SUB; 
       // AND operand
-      12'b1x0000000111: alu_sel = AND; 
+      12'b1?0000000111: alu_sel = AND; 
       // OR operand
-      12'b1x0000000110: alu_sel = OR; 
+      12'b1?0000000110: alu_sel = OR; 
       default:          alu_sel = XXX; 
     endcase
   end

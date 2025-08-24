@@ -14,7 +14,7 @@ module cpu
   logic [2:0]  funct3 = instruction[14:12];
   logic [6:0]  funct7 = instruction[31:25];
 
-  controller(.*);
-  datapath(.*);
+  controller controller(.*);
+  controller datapath(.*);
 
 endmodule: cpu
