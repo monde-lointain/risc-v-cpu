@@ -7,10 +7,10 @@ if [file exists work] {
 vlib work
 
 # Compile sources
-vlog tb.sv
+vlog tb.sv ../rtl/pc.sv
 
 # Optimize
-vopt -debugdb +acc top -o top_opt
+vopt -debugdb +acc tb_pc_mux -o top_opt
 
 # Load simulator with optimized design.
 vsim -debugdb top_opt
