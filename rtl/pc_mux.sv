@@ -5,12 +5,10 @@ module pc_mux
 );
 
   always_ff @(posedge clk or negedge rst_n) begin
-    if(!rst_n) begin
-      pc <= 0;
-    end
+    if(!rst_n) pc <= 0;
     else begin
-      if      (taken)   pc <= br_addr;
-      else if (halting) pc <= pc;
+      if      (halting) pc <= pc;
+      else if (taken)   pc <= br_addr;
       else              pc <= pc + 10'd4;
     end
   end

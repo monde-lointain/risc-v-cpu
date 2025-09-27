@@ -22,3 +22,10 @@ tags
 tb/*
 !tb/*.sv
 !tb/*.do
+
+# Questa files
+*.mpf
+*.mti
+*.dbg
+transcript
+work/
