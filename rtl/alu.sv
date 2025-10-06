@@ -21,7 +21,6 @@ import definitions_pkg::*;
       ALU_SRA:  result = a >>> b;  
       ALU_OR:   result = a | b;  
       ALU_AND:  result = a & b;  
-      ALU_LUI:  result = b;
       default:  result = 0;
     endcase
   end
