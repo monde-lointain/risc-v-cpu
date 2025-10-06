@@ -12,10 +12,8 @@ module register_file
   logic [31:0] regs [31:0]; // 32 regs, each 32 bits long
 
   // Write to the register file
-  always_ff @(posedge clk) begin
-    if (wen) 
-      regs[w] <= d;
-  end
+  always_ff @(posedge clk) 
+    if (wen) regs[w] <= d;
 
   // Register 0 is hardwired to zero
   assign a = !ra ? 0 : regs[ra];
