@@ -1,6 +1,8 @@
+TEST ?= 
+
 .PHONY: test clean
 test:
-	$(MAKE) -C tb
+	$(MAKE) -C tb TEST=$(TEST)
 
 clean:
 	rm -rf modelsim.ini work transcript vsim*

@@ -1,3 +1,5 @@
+TEST ?=
+
 .PHONY: all
 all:
-	vsim -do run.do -c
+	vsim -do run_$(TEST).do -c
