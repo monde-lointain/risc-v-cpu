@@ -4,16 +4,16 @@ module alu_tb;
  
   // DUT interface
   logic [31:0] a, b;
-  alu_e        alu_sel;
+  alu_e        sel;
   logic [31:0] result;
  
   alu dut (.*);
  
   // Coverage for operations
   covergroup op_cov;
-    coverpoint alu_sel {
+    coverpoint sel {
       bins basic_ops[] = {ALU_ADD, ALU_SUB, ALU_SLL, ALU_SLT, ALU_SLTU,
-                          ALU_XOR, ALU_SRL, ALU_SRA, ALU_OR, ALU_AND, ALU_LUI};
+                          ALU_XOR, ALU_SRL, ALU_SRA, ALU_OR, ALU_AND};
       ignore_bins reserved = {ALU_XXX};
     }
   endgroup
@@ -32,14 +32,14 @@ module alu_tb;
       bins others = {[32'h0000_0001 : 32'hFFFE_FFFF]};
     }
  
-    coverpoint alu_sel {
+    coverpoint sel {
       bins valid_ops[] = {ALU_ADD, ALU_SUB, ALU_SLL, ALU_SLT, ALU_SLTU,
-                          ALU_XOR, ALU_SRL, ALU_SRA, ALU_OR, ALU_AND, ALU_LUI};
+                          ALU_XOR, ALU_SRL, ALU_SRA, ALU_OR, ALU_AND};
       ignore_bins invalid_ops = {ALU_XXX};
     }
  
-    cross a, b, alu_sel {
-      ignore_bins ignore_invalid_ops = binsof(alu_sel) intersect {ALU_XXX};
+    cross a, b, sel {
+      ignore_bins ignore_invalid_ops = binsof(sel) intersect {ALU_XXX};
     }
   endgroup
  
@@ -65,7 +65,6 @@ module alu_tb;
      7:       return ALU_SRA;
      8:       return ALU_OR;
      9:       return ALU_AND;
-     10:      return ALU_LUI;
      default: return ALU_XXX;
     endcase
   endfunction
@@ -93,7 +92,6 @@ module alu_tb;
       ALU_SRA:  expected = a >>> b;
       ALU_OR:   expected = a | b;
       ALU_AND:  expected = a & b;
-      ALU_LUI:  expected = b;
       default:  expected = 0;
     endcase
     if (dut_result !== expected)
@@ -105,9 +103,9 @@ module alu_tb;
     repeat (1000) begin
       a = get_data();
       b = get_data();
-      alu_sel = get_op();
+      sel = get_op();
       #1;
-      check_result(a, b, alu_sel, result);
+      check_result(a, b, sel, result);
       oc.sample();
       dc.sample();
     end

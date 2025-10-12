@@ -41,7 +41,7 @@ import definitions_pkg::*;
         taken   = 0;
         imm_sel = IMM_U_TYPE;
         b_sel   = 1;
-        alu_sel = ALU_LUI;
+        alu_sel = ALU_ADD;
         mem_rw  = 0;
         rf_wen  = 1;
         wb_sel  = 2'b01;

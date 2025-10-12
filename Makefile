@@ -1,6 +1,9 @@
 TEST ?= 
 
-.PHONY: test clean
+.PHONY: all test clean
+all:
+	vsim -gui -do run.do
+
 test:
 	$(MAKE) -C tb TEST=$(TEST)
 
