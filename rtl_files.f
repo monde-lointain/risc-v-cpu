@@ -1,3 +1,5 @@
-../rtl/pc_mux.sv
-../rtl/imem.sv
-../rtl/if_stage.sv
+./rtl/definitions_pkg.sv
+./rtl/imm_gen.sv
+./rtl/register_file.sv
+./rtl/alu.sv
+./rtl/datapath.sv

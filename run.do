@@ -16,10 +16,10 @@ if [file exists work] {
 vlib work
  
 # Compile the source files.
-vlog ./rtl/definitions_pkg.sv ./rtl/imm_gen.sv ./rtl/alu.sv ./rtl/register_file.sv ./rtl/datapath.sv
+vlog ./rtl/definitions_pkg.sv ./rtl/control.sv
 
 # Optimize the design.
-vopt -debugdb +acc datapath -o top_opt
+vopt -debugdb control -o top_opt
 
 # Load simulator with optimized design.
 vsim -debugdb top_opt

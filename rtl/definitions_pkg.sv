@@ -15,7 +15,14 @@ package definitions_pkg;
                              ALU_SRA, 
                              ALU_OR, 
                              ALU_AND, 
+                             ALU_LUI, 
                              ALU_XXX = 'x } alu_e;
+
+  typedef enum logic [3:0] { BR_EQ  = 4'b0001, 
+                             BR_NE  = 4'b0010, 
+                             BR_LT  = 4'b0100, 
+                             BR_GE  = 4'b1000,
+                             BR_XXX = 'x     } branch_e; 
 
   typedef enum logic [2:0] { IMM_I_TYPE, 
                              IMM_STORE, 
