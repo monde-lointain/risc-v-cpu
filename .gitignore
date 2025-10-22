@@ -29,3 +29,6 @@ tb/*
 *.dbg
 transcript
 work/
+
+buildresults/
+dfx_runtime.txt

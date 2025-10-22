@@ -16,7 +16,11 @@ if [file exists work] {
 vlib work
  
 # Compile the source files.
+<<<<<<< HEAD
 vlog -lint -f list1.f
+=======
+vlog ./rtl/definitions_pkg.sv ./rtl/imm_gen.sv ./rtl/alu.sv ./rtl/register_file.sv ./rtl/datapath.sv
+>>>>>>> 85667a3e90bb46e39a89fadce7c30939a85eb008
 
 # Optimize the design.
 vopt -debugdb +acc datapath -o top_opt
