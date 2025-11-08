@@ -15,7 +15,6 @@ package definitions_pkg;
                             ALU_SRA, 
                             ALU_OR, 
                             ALU_AND, 
-                            ALU_LUI, 
                             ALU_XXX = 'x} alu_e;
 
   typedef enum logic [3:0] {BR_EQ  = 4'b0001, 

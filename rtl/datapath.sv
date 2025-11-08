@@ -4,7 +4,7 @@ import definitions_pkg::*;
  input  logic [ 4:0] rf_w, rf_ra, rf_rb,
  input  logic        rf_wen,
  input  imm_e        imm_sel,
- input  logic [ 1:0] examux, exbmux,
+ input  logic [ 1:0] ex_a_sel, ex_b_sel,
  input  logic [ 1:0] wbmux,
  input  logic        br_uns,
  input  logic        aluamux, 
@@ -31,8 +31,8 @@ import definitions_pkg::*;
   logic [31:0] ex_imm_data;
   logic [31:0] alu_out;     
   logic [31:0] alu_a_src;
-  logic [11:2] mem_pc;
-  logic [11:2] mem_next_pc;
+  logic [11:0] mem_pc;
+  logic [11:0] mem_next_pc;
 
   register_file rfile(.clk, .wen(rf_wen), .d(wb_data), .ra(rf_ra), .rb(rf_rb), .w(rf_w), .a(id_rs1), .b(id_rs2));
 
@@ -64,7 +64,7 @@ import definitions_pkg::*;
   assign br_eq = ex_a_src == ex_b_src;
 
   always_comb begin
-    case (examux)
+    case (ex_a_sel)
       2'b00: ex_a_src = ex_rs1;
       2'b01: ex_a_src = mem_alu_out;
       2'b10: ex_a_src = wb_data;
@@ -73,7 +73,7 @@ import definitions_pkg::*;
   end
 
   always_comb begin
-    case (exbmux)
+    case (ex_b_sel)
       2'b00: ex_b_src = ex_rs2;
       2'b01: ex_b_src = mem_alu_out;
       2'b10: ex_b_src = wb_data;
@@ -94,7 +94,7 @@ import definitions_pkg::*;
 
   assign branch_or_addr = mem_alu_out[11:0];
   // Recalculate PC + 4 in MEM stage
-  assign mem_next_pc = mem_pc[11:2] + 1;
+  assign mem_next_pc = mem_pc[11:0] + 4;
 
   always_comb begin
     case (wbmux)
