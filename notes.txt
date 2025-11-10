@@ -1,0 +1,4 @@
+Register loads take 3 cycles (need 2 cycles between load and use)
+Any load followed by any store 2 cycles later causes a one cycle bubble
+Taken branch causes a one cycle bubble
+Branches resolved in EX stage

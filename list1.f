@@ -3,3 +3,5 @@
 ./rtl/datapath.sv
 ./rtl/alu.sv
 ./rtl/register_file.sv
+./rtl/issue.sv
+./rtl/busses.sv

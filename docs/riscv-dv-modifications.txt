@@ -1,0 +1,6 @@
+1. Download Questa GCC: https://ednc-ftp.synology.me:15001/fsdownload/rXXNomwJ8/questa_sim-win64-gcc-7.4.0-mingw64vc15.zip
+2. Extract GCC to Questa install directory.
+2. Edit modelsim.ini
+  - Modify mtiUvm environment variables:
+      mtiUvm = $MODEL_TECH/../uvm-1.2
+      DpiCppPath = $MODEL_TECH/../gcc-7.4.0-mingw64vc15/bin/gcc.exe

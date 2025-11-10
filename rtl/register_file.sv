@@ -9,14 +9,14 @@ module register_file
  output logic [31:0] a, b 
 );
 
-  logic [31:0] regs [31:0]; // 32 regs, each 32 bits long
+  logic [31:0] regs [0:31]; // 32 regs, each 32 bits long
 
   // Write to the register file
   always_ff @(posedge clk) 
-    if (wen) regs[w] <= d;
+    if (wen && (w != '0)) regs[w] <= d;
 
   // Register 0 is hardwired to zero
-  assign a = !ra ? 0 : regs[ra];
-  assign b = !rb ? 0 : regs[rb];
+  assign a = (ra == '0) ? '0 : regs[ra];
+  assign b = (rb == '0) ? '0 : regs[rb];
 
 endmodule: register_file

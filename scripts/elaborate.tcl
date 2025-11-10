@@ -2,7 +2,7 @@
 set outputDir ../buildresults
 file mkdir $outputDir
 
-set top control
+set top busses
 
 # Create dummy project
 create_project $top ./buildresults -part xc7a35tcpg236-1 -force
